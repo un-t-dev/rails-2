@@ -58,3 +58,4 @@ gem 'bulma-extensions-rails', '~> 1.0.30'
 
 gem 'devise'
 gem 'carrierwave'
+gem 'pry-rails'
