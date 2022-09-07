@@ -7,7 +7,10 @@ class ReservationsController < ApplicationController
     end
     
     def new
+      @user = current_user.id
+      @room_registration = RoomRegistration.find_by(id: params[:room_registration_id])
       @reservation = Reservation.new(reservation_params)
+      render template: 'room_registrations/show' and return if @reservation.invalid?
       @days = (@reservation.end_date - @reservation.start_date).to_i / 86400
     end
     
