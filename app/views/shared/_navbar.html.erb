@@ -35,6 +35,12 @@
                     </a>
                     <div class="navbar-dropdown">
                         <%= link_to  "ユーザ登録情報編集", edit_user_registration_path, class: "navbar-item" %>
+                        <%= link_to 'プロフィール', dashboard_path, class: "navbar-item" %>
+                        <%= link_to  "お部屋を新規登録", new_room_registration_path, class: "navbar-item" %>
+                        <%= link_to  "登録したお部屋一覧", room_registrations_path, class: "navbar-item" %>
+                        <%= link_to "予約済み一覧", reservations_path, class: "navbar-item" %>
+                        <div class="search"><%= render "shared/search" %></div>
+                        <div class="search_free_word"><%= render "shared/word_free_search" %></div>
                         <a href="" class="navbar-item"></a>
                         <hr class="navbar-divider">
                         <%= link_to  "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item" %>
@@ -44,38 +50,3 @@
         </div>
     </div>
 </nav>
-
-<% if (user_signed_in?) %>
-    <nav class="navbar has-shadow" style="z-index: 3;">
-        <div class="container">
-            <div class="navbar">
-                <%= link_to 'プロフィール', dashboard_path, class: "navbar-item" %>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">ホスト</a>
-                    <div class="navbar-dropdown">
-                        <%= link_to  "お部屋を新規登録", new_room_registration_path, class: "navbar-item" %>
-                        <%= link_to  "登録したお部屋一覧", room_registrations_path, class: "navbar-item" %>
-                    </div>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">ゲスト</a>
-                    <div class="navbar-dropdown">
-                        <%= link_to "予約済み一覧", reservations_path, class: "navbar-item" %>
-                        <a class="navbar-item"></a>
-                        <a class="navbar-item"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-<% end %>
-<%= form_with url: room_registrations_search_path, method: :get, local: true do |f| %>
-  <%= f.text_field :room_erea, placeholder: "エリア", class: "search-area_field" %>
-  <%= f.submit "検索" %>
-<% end %>
-<div class="search_free_word_area">
-  <%= form_with url: room_registrations_word_free_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :word, placeholder: "キーワード" %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>

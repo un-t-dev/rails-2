@@ -32,7 +32,7 @@ class RoomRegistrationsController < ApplicationController
     if params[:room_erea]
       @room_registrations = RoomRegistration.where('room_erea LIKE ?', "%#{params[:room_erea]}%")
     else
-      @room_registrations = RoomRegistration.none
+      @room_registrations = RoomRegistration.all
     end
   end
   
@@ -40,7 +40,7 @@ class RoomRegistrationsController < ApplicationController
     if params[:word]
       @room_registrations = RoomRegistration.where('room_name LIKE ? OR room_erea LIKE ? OR room_price LIKE ?', "%#{params[:word]}%", "%#{params[:word]}%", "%#{params[:word]}%")
     else
-      @room_registrations = RoomRegistration.none
+      @room_registrations = RoomRegistration.all
     end
   end
  
