@@ -1,0 +1,4 @@
+<%= form_with url: room_registrations_search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :room_erea, placeholder: "エリア", class: "search-area_field" %>
+  <%= f.submit "検索" %>
+<% end %>
